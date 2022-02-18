@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.6.5 on win32)" generated="20220218 13:48:24.656" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="C:\development\robot-scripts\Pinterest Login\Tests">
+<suite id="s1-s1" name="01 HomePage" source="C:\development\robot-scripts\Pinterest Login\Tests\01_HomePage.robot">
+<test id="s1-s1-t1" name="Verify Pinterest Page">
+<kw name="GIVEN Begin Web Test" library="Common">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<msg timestamp="20220218 13:48:25.026" level="INFO">Opening browser 'chrome' to base url 'https://www.pinterest.ph/'.</msg>
+<status status="PASS" starttime="20220218 13:48:25.026" endtime="20220218 13:48:32.535"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220218 13:48:32.535" endtime="20220218 13:48:32.674"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:25.011" endtime="20220218 13:48:32.674"/>
+</kw>
+<kw name="WHEN Verify Page Loaded" library="Common">
+<arg>${URL}</arg>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${actual_url}</var>
+<doc>Returns the current browser URL.</doc>
+<msg timestamp="20220218 13:48:32.682" level="INFO">${actual_url} = https://www.pinterest.ph/</msg>
+<status status="PASS" starttime="20220218 13:48:32.674" endtime="20220218 13:48:32.682"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${actual_url}</arg>
+<arg>${expected_url}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220218 13:48:32.682" endtime="20220218 13:48:32.682"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:32.674" endtime="20220218 13:48:32.682"/>
+</kw>
+<kw name="THEN Verify Home Page Title" library="HomePage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Pinterest</arg>
+<doc>Waits until ``text`` appears on current page.</doc>
+<status status="PASS" starttime="20220218 13:48:32.682" endtime="20220218 13:48:32.708"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${TITLE_PAGE}</arg>
+<arg>Pinterest</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:32.708" level="INFO">Verifying element '//div[@data-test-id="pinterest-logo"]/div/h1' contains exact text 'Pinterest'.</msg>
+<status status="PASS" starttime="20220218 13:48:32.708" endtime="20220218 13:48:32.739"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:32.682" endtime="20220218 13:48:32.754"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:25.011" endtime="20220218 13:48:32.754"/>
+</test>
+<status status="PASS" starttime="20220218 13:48:24.688" endtime="20220218 13:48:32.754"/>
+</suite>
+<suite id="s1-s2" name="02 ForgotPassword" source="C:\development\robot-scripts\Pinterest Login\Tests\02_ForgotPassword.robot">
+<test id="s1-s2-t1" name="Verify Login Page">
+<kw name="GIVEN Verify Login Button" library="HomePage">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${HOMEPAGE_LOGIN_BTN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:32.839" level="INFO">Element '//div[@data-test-id="simple-login-button"]/button' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:32.808" endtime="20220218 13:48:32.839"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${HOMEPAGE_LOGIN_BTN}</arg>
+<doc>Verifies that element identified with ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220218 13:48:32.839" endtime="20220218 13:48:32.886"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:32.808" endtime="20220218 13:48:32.886"/>
+</kw>
+<kw name="WHEN Click Homepage Login button" library="HomePage">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${HOMEPAGE_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:32.886" level="INFO">Clicking button '//div[@data-test-id="simple-login-button"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:32.886" endtime="20220218 13:48:33.039"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:32.886" endtime="20220218 13:48:33.039"/>
+</kw>
+<kw name="THEN Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.103" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.047" endtime="20220218 13:48:33.103"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:33.047" endtime="20220218 13:48:33.103"/>
+</kw>
+<kw name="AND Verify Login Page Contents" library="LoginPopup">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Welcome to Pinterest</arg>
+<doc>Waits until ``text`` appears on current page.</doc>
+<status status="PASS" starttime="20220218 13:48:33.103" endtime="20220218 13:48:33.119"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${MODAL_CLOSE_BTN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.151" level="INFO">Element '//div[@data-test-id="full-page-signup-close-button"]/button' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.119" endtime="20220218 13:48:33.151"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${MODAL_CLOSE_BTN}</arg>
+<doc>Verifies that element identified with ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220218 13:48:33.151" endtime="20220218 13:48:33.175"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:email</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.199" level="INFO">Element 'id:email' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.175" endtime="20220218 13:48:33.199"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>id:email</arg>
+<doc>Verifies that element identified with ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220218 13:48:33.199" endtime="20220218 13:48:33.223"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:password</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.247" level="INFO">Element 'id:password' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.223" endtime="20220218 13:48:33.247"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>id:password</arg>
+<doc>Verifies that element identified with ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220218 13:48:33.247" endtime="20220218 13:48:33.279"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.311" level="INFO">Element '//div[@data-test-id="registerFormSubmitButton"]/button' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.279" endtime="20220218 13:48:33.311"/>
+</kw>
+<kw name="Element Should Be Enabled" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Verifies that element identified with ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220218 13:48:33.311" endtime="20220218 13:48:33.335"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:33.103" endtime="20220218 13:48:33.335"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:32.808" endtime="20220218 13:48:33.335"/>
+</test>
+<test id="s1-s2-t2" name="Verify Forgot Password Link">
+<kw name="GIVEN Verify if Forgot Password is displayed" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${FORGOT_PASS}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:33.391" level="INFO">Element '//div[@data-test-id="password-reset-button"]/div/div/a' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:33.343" endtime="20220218 13:48:33.391"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${FORGOT_PASS}</arg>
+<arg>Forgot your password?</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:33.391" level="INFO">Verifying element '//div[@data-test-id="password-reset-button"]/div/div/a' contains exact text 'Forgot your password?'.</msg>
+<status status="PASS" starttime="20220218 13:48:33.391" endtime="20220218 13:48:33.415"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:33.343" endtime="20220218 13:48:33.415"/>
+</kw>
+<kw name="WHEN Click &quot;Forgot Your Password?&quot; Link" library="LoginPopup">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${FORGOT_PASS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:33.415" level="INFO">Clicking link '//div[@data-test-id="password-reset-button"]/div/div/a'.</msg>
+<status status="PASS" starttime="20220218 13:48:33.415" endtime="20220218 13:48:34.347"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:33.415" endtime="20220218 13:48:34.347"/>
+</kw>
+<kw name="THEN Verify Forgot Pasword Page Title" library="ForgotPassword">
+<kw name="Verify Page Loaded" library="Common">
+<arg>${FORGOT_PASS_URL}</arg>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${actual_url}</var>
+<doc>Returns the current browser URL.</doc>
+<msg timestamp="20220218 13:48:34.355" level="INFO">${actual_url} = https://www.pinterest.ph/password/reset/</msg>
+<status status="PASS" starttime="20220218 13:48:34.347" endtime="20220218 13:48:34.355"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${actual_url}</arg>
+<arg>${expected_url}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220218 13:48:34.355" endtime="20220218 13:48:34.355"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:34.347" endtime="20220218 13:48:34.355"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${FORGOT_PASS_TITLE_PAGE}</arg>
+<arg>Let's find your Pinterest account</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:34.355" level="INFO">Verifying element '//div[@data-test-id="password-reset-form"]/h1' contains exact text 'Let's find your Pinterest account'.</msg>
+<status status="PASS" starttime="20220218 13:48:34.355" endtime="20220218 13:48:34.380"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:34.347" endtime="20220218 13:48:34.380"/>
+</kw>
+<kw name="AND Verify if search function is visible" library="ForgotPassword">
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${SEARCH_FORM}</arg>
+<arg>What's your email, name, or username?</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220218 13:48:34.408" level="INFO">Element '//form[@data-test-id="passwordResetForm"]' contains text 'What's your email, name, or username?'.</msg>
+<status status="PASS" starttime="20220218 13:48:34.380" endtime="20220218 13:48:34.408"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:userQuery</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:34.442" level="INFO">Element 'id:userQuery' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:34.408" endtime="20220218 13:48:34.442"/>
+</kw>
+<kw name="Element Attribute Value Should Be" library="SeleniumLibrary">
+<arg>id:userQuery</arg>
+<arg>placeholder</arg>
+<arg>Search</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<msg timestamp="20220218 13:48:34.454" level="INFO">Element 'id:userQuery' attribute 'placeholder' contains value 'Search'.</msg>
+<status status="PASS" starttime="20220218 13:48:34.442" endtime="20220218 13:48:34.454"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${search_btn}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:34.482" level="INFO">Element '//form[@data-test-id="passwordResetForm"]/div[2]/div[2]/button' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:34.454" endtime="20220218 13:48:34.482"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:34.380" endtime="20220218 13:48:34.484"/>
+</kw>
+<kw name="AND Go Back to Homepage" library="ForgotPassword">
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20220218 13:48:34.484" endtime="20220218 13:48:35.026"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:34.484" endtime="20220218 13:48:35.026"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:33.335" endtime="20220218 13:48:35.026"/>
+</test>
+<status status="PASS" starttime="20220218 13:48:32.754" endtime="20220218 13:48:35.026"/>
+</suite>
+<suite id="s1-s3" name="03 Login" source="C:\development\robot-scripts\Pinterest Login\Tests\03_Login.robot">
+<test id="s1-s3-t1" name="Verify error message on empty form">
+<kw name="GIVEN Click Homepage Login button" library="HomePage">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${HOMEPAGE_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:35.068" level="INFO">Clicking button '//div[@data-test-id="simple-login-button"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:35.068" endtime="20220218 13:48:35.251"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:35.068" endtime="20220218 13:48:35.251"/>
+</kw>
+<kw name="AND Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:35.313" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:35.251" endtime="20220218 13:48:35.313"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:35.251" endtime="20220218 13:48:35.313"/>
+</kw>
+<kw name="WHEN Click Login Button" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:35.313" level="INFO">Clicking button '//div[@data-test-id="registerFormSubmitButton"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:35.313" endtime="20220218 13:48:35.417"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:38.421" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:35.417" endtime="20220218 13:48:38.421"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:35.313" endtime="20220218 13:48:38.421"/>
+</kw>
+<kw name="THEN Verify Empty email field" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:38.468" level="INFO">Element 'id:email-error' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:38.421" endtime="20220218 13:48:38.468"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<arg>You missed a spot! Don't forget to add your email.</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:38.468" level="INFO">Verifying element 'id:email-error' contains exact text 'You missed a spot! Don't forget to add your email.'.</msg>
+<status status="PASS" starttime="20220218 13:48:38.468" endtime="20220218 13:48:38.508"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:38.421" endtime="20220218 13:48:38.508"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:35.068" endtime="20220218 13:48:38.516"/>
+</test>
+<test id="s1-s3-t2" name="Login using invalid email format">
+<kw name="GIVEN Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:38.561" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:38.521" endtime="20220218 13:48:38.561"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:38.521" endtime="20220218 13:48:38.561"/>
+</kw>
+<kw name="WHEN Login your account" library="LoginPopup">
+<arg>${INVALID_EMAIL_FORMAT}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<kw name="Fill &quot;Email&quot; Field" library="LoginPopup">
+<arg>${email}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:38.561" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:email element.</msg>
+<msg timestamp="20220218 13:48:38.577" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:38.577" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:38.577" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:38.577" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:38.577" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:38.561" endtime="20220218 13:48:38.890"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:38.890" level="INFO">Typing text 'invalid email format' into text field 'id:email'.</msg>
+<status status="PASS" starttime="20220218 13:48:38.890" endtime="20220218 13:48:39.121"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:38.561" endtime="20220218 13:48:39.121"/>
+</kw>
+<kw name="Fill &quot;Password&quot; Field" library="LoginPopup">
+<arg>${password}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:39.121" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:password element.</msg>
+<msg timestamp="20220218 13:48:39.129" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:39.129" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:39.129" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:39.129" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:39.129" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:39.121" endtime="20220218 13:48:39.455"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:39.455" level="INFO">Typing password into text field 'id:password'.</msg>
+<status status="PASS" starttime="20220218 13:48:39.455" endtime="20220218 13:48:39.598"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:39.121" endtime="20220218 13:48:39.598"/>
+</kw>
+<kw name="Click Login button" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:39.606" level="INFO">Clicking button '//div[@data-test-id="registerFormSubmitButton"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:39.606" endtime="20220218 13:48:39.720"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:42.734" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:39.720" endtime="20220218 13:48:42.734"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:39.606" endtime="20220218 13:48:42.734"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:38.561" endtime="20220218 13:48:42.734"/>
+</kw>
+<kw name="THEN Verify Email Format" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:42.765" level="INFO">Element 'id:email-error' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:42.734" endtime="20220218 13:48:42.765"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<arg>Hmm...that doesn't look like an email address.</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:42.765" level="INFO">Verifying element 'id:email-error' contains exact text 'Hmm...that doesn't look like an email address.'.</msg>
+<status status="PASS" starttime="20220218 13:48:42.765" endtime="20220218 13:48:42.797"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:42.734" endtime="20220218 13:48:42.797"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:38.520" endtime="20220218 13:48:42.797"/>
+</test>
+<test id="s1-s3-t3" name="Login using unregistered email">
+<kw name="GIVEN Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:42.829" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:42.797" endtime="20220218 13:48:42.829"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:42.797" endtime="20220218 13:48:42.829"/>
+</kw>
+<kw name="WHEN Login your account" library="LoginPopup">
+<arg>${INVALID_EMAIL}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<kw name="Fill &quot;Email&quot; Field" library="LoginPopup">
+<arg>${email}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:42.837" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:email element.</msg>
+<msg timestamp="20220218 13:48:42.853" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:42.853" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:42.853" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:42.853" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:42.853" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:42.837" endtime="20220218 13:48:43.189"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:43.189" level="INFO">Typing text 'fdsafdsa@dsafs.com' into text field 'id:email'.</msg>
+<status status="PASS" starttime="20220218 13:48:43.189" endtime="20220218 13:48:43.414"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:42.837" endtime="20220218 13:48:43.414"/>
+</kw>
+<kw name="Fill &quot;Password&quot; Field" library="LoginPopup">
+<arg>${password}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:43.414" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:password element.</msg>
+<msg timestamp="20220218 13:48:43.430" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:43.430" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:43.430" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:43.430" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:43.430" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:43.414" endtime="20220218 13:48:43.773"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:43.781" level="INFO">Typing password into text field 'id:password'.</msg>
+<status status="PASS" starttime="20220218 13:48:43.773" endtime="20220218 13:48:43.909"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:43.414" endtime="20220218 13:48:43.909"/>
+</kw>
+<kw name="Click Login button" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:43.909" level="INFO">Clicking button '//div[@data-test-id="registerFormSubmitButton"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:43.909" endtime="20220218 13:48:44.021"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:47.024" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:44.021" endtime="20220218 13:48:47.024"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:43.909" endtime="20220218 13:48:47.024"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:42.837" endtime="20220218 13:48:47.024"/>
+</kw>
+<kw name="THEN Verify Invalid Email" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:47.068" level="INFO">Element 'id:email-error' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:47.024" endtime="20220218 13:48:47.068"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>id:email-error</arg>
+<arg>The email you entered does not belong to any account.</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:47.068" level="INFO">Verifying element 'id:email-error' contains exact text 'The email you entered does not belong to any account.'.</msg>
+<status status="PASS" starttime="20220218 13:48:47.068" endtime="20220218 13:48:47.124"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.024" endtime="20220218 13:48:47.124"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:42.797" endtime="20220218 13:48:47.124"/>
+</test>
+<test id="s1-s3-t4" name="Login using incorrect password">
+<kw name="GIVEN Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:47.164" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:47.132" endtime="20220218 13:48:47.164"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.132" endtime="20220218 13:48:47.164"/>
+</kw>
+<kw name="WHEN Login your account" library="LoginPopup">
+<arg>${VALID_EMAIL}</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<kw name="Fill &quot;Email&quot; Field" library="LoginPopup">
+<arg>${email}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:47.172" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:email element.</msg>
+<msg timestamp="20220218 13:48:47.188" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:47.188" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:47.196" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:47.196" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:47.196" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:47.172" endtime="20220218 13:48:47.533"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:47.541" level="INFO">Typing text 'ilao.shiela@yahoo.com' into text field 'id:email'.</msg>
+<status status="PASS" starttime="20220218 13:48:47.541" endtime="20220218 13:48:47.798"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.172" endtime="20220218 13:48:47.798"/>
+</kw>
+<kw name="Fill &quot;Password&quot; Field" library="LoginPopup">
+<arg>${password}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:47.806" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:password element.</msg>
+<msg timestamp="20220218 13:48:47.821" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:47.821" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:47.821" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:47.821" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:47.821" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:47.806" endtime="20220218 13:48:48.156"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:48.156" level="INFO">Typing password into text field 'id:password'.</msg>
+<status status="PASS" starttime="20220218 13:48:48.156" endtime="20220218 13:48:48.316"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.798" endtime="20220218 13:48:48.316"/>
+</kw>
+<kw name="Click Login button" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:48.316" level="INFO">Clicking button '//div[@data-test-id="registerFormSubmitButton"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:48.316" endtime="20220218 13:48:48.433"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:51.442" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:48.433" endtime="20220218 13:48:51.442"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:48.316" endtime="20220218 13:48:51.442"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.172" endtime="20220218 13:48:51.442"/>
+</kw>
+<kw name="THEN Verify Incorrect password is visible" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:password-error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:51.502" level="INFO">Element 'id:password-error' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:51.442" endtime="20220218 13:48:51.502"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:51.442" endtime="20220218 13:48:51.502"/>
+</kw>
+<kw name="AND Verify Incorrect password message" library="LoginPopup">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>id:password-error</arg>
+<arg>The password you entered is incorrect. Try again or Reset your password</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:51.502" level="INFO">Verifying element 'id:password-error' contains exact text 'The password you entered is incorrect. Try again or Reset your password'.</msg>
+<status status="PASS" starttime="20220218 13:48:51.502" endtime="20220218 13:48:51.549"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:51.502" endtime="20220218 13:48:51.549"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:47.124" endtime="20220218 13:48:51.549"/>
+</test>
+<test id="s1-s3-t5" name="Verify Reset Password Link">
+<kw name="GIVEN Verify Incorrect password is visible" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:password-error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:51.584" level="INFO">Element 'id:password-error' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:51.557" endtime="20220218 13:48:51.584"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:51.549" endtime="20220218 13:48:51.584"/>
+</kw>
+<kw name="WHEN Click &quot;Reset your password&quot; link" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${RESET_PASS}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:51.584" level="INFO">Clicking button '//div[@data-test-id="touchableErrorMessage"]/span[2]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:51.584" endtime="20220218 13:48:51.717"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:53.723" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:51.717" endtime="20220218 13:48:53.723"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:51.584" endtime="20220218 13:48:53.723"/>
+</kw>
+<kw name="THEN Verify Reset Password Popup" library="ResetPasswordPopup">
+<arg>${VALID_EMAIL}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${RESET_PASS_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:53.770" level="INFO">Element '//div[@role="alertdialog"]/div[2]/div' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:53.723" endtime="20220218 13:48:53.770"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${RESET_PASS_MODAL_TITLE}</arg>
+<arg>Password reset email sent</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:48:53.778" level="INFO">Verifying element '//div[@role="alertdialog"]/div[2]/div/div[1]/div/h1' contains exact text 'Password reset email sent'.</msg>
+<status status="PASS" starttime="20220218 13:48:53.770" endtime="20220218 13:48:53.823"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${RESET_PASS_MODAL_CONTENT}</arg>
+<arg>${email}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220218 13:48:53.862" level="INFO">Element '//div[@role="alertdialog"]/div[2]/div/div[2]/div/div[1]' contains text 'ilao.shiela@yahoo.com'.</msg>
+<status status="PASS" starttime="20220218 13:48:53.823" endtime="20220218 13:48:53.862"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:53.723" endtime="20220218 13:48:53.862"/>
+</kw>
+<kw name="AND Go back to Login Popup" library="ResetPasswordPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Got it</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:53.862" level="INFO">Clicking button 'Got it'.</msg>
+<status status="PASS" starttime="20220218 13:48:53.862" endtime="20220218 13:48:53.988"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:53.862" endtime="20220218 13:48:53.988"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:51.549" endtime="20220218 13:48:53.988"/>
+</test>
+<test id="s1-s3-t6" name="Login using registered account">
+<kw name="GIVEN Verify Login Popup Page" library="LoginPopup">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_POPUP_MODAL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:48:54.028" level="INFO">Element '//div[@data-test-id="login-modal-default"]' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:48:53.996" endtime="20220218 13:48:54.028"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:53.996" endtime="20220218 13:48:54.028"/>
+</kw>
+<kw name="WHEN Login your account" library="LoginPopup">
+<arg>${VALID_EMAIL}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<kw name="Fill &quot;Email&quot; Field" library="LoginPopup">
+<arg>${email}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:54.028" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:email element.</msg>
+<msg timestamp="20220218 13:48:54.044" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:54.044" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:54.044" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:54.044" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:54.044" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:54.028" endtime="20220218 13:48:54.373"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:54.373" level="INFO">Typing text 'ilao.shiela@yahoo.com' into text field 'id:email'.</msg>
+<status status="PASS" starttime="20220218 13:48:54.373" endtime="20220218 13:48:54.597"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:54.028" endtime="20220218 13:48:54.597"/>
+</kw>
+<kw name="Fill &quot;Password&quot; Field" library="LoginPopup">
+<arg>${password}</arg>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220218 13:48:54.605" level="INFO">Sending key(s) ('CTRL+a+BACKSPACE',) to id:password element.</msg>
+<msg timestamp="20220218 13:48:54.613" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20220218 13:48:54.613" level="INFO">Sending key a</msg>
+<msg timestamp="20220218 13:48:54.613" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20220218 13:48:54.613" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20220218 13:48:54.613" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20220218 13:48:54.605" endtime="20220218 13:48:54.941"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:54.941" level="INFO">Typing password into text field 'id:password'.</msg>
+<status status="PASS" starttime="20220218 13:48:54.941" endtime="20220218 13:48:55.057"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:54.597" endtime="20220218 13:48:55.057"/>
+</kw>
+<kw name="Click Login button" library="LoginPopup">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGINPOPUP_LOGIN_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:48:55.057" level="INFO">Clicking button '//div[@data-test-id="registerFormSubmitButton"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:48:55.057" endtime="20220218 13:48:55.137"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:48:58.138" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220218 13:48:55.137" endtime="20220218 13:48:58.138"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:55.057" endtime="20220218 13:48:58.138"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:54.028" endtime="20220218 13:48:58.138"/>
+</kw>
+<kw name="THEN Verify Dashboard Page Title" library="Dashboard">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Home</arg>
+<doc>Waits until ``text`` appears on current page.</doc>
+<status status="PASS" starttime="20220218 13:48:58.138" endtime="20220218 13:49:00.490"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${PAGE_HEADER}</arg>
+<arg>Home</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:49:00.490" level="INFO">Verifying element '//div[@data-test-id="header-background"]/div[2]/div/div/div/div[2]/a/div/div/span' contains exact text 'Home'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.490" endtime="20220218 13:49:00.516"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:58.138" endtime="20220218 13:49:00.516"/>
+</kw>
+<status status="PASS" starttime="20220218 13:48:53.988" endtime="20220218 13:49:00.516"/>
+</test>
+<status status="PASS" starttime="20220218 13:48:35.034" endtime="20220218 13:49:00.516"/>
+</suite>
+<suite id="s1-s4" name="04 AccountDashboard" source="C:\development\robot-scripts\Pinterest Login\Tests\04_AccountDashboard.robot">
+<test id="s1-s4-t1" name="Verify logged in user details">
+<kw name="GIVEN Verify Dashboard Page Title" library="Dashboard">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Home</arg>
+<doc>Waits until ``text`` appears on current page.</doc>
+<status status="PASS" starttime="20220218 13:49:00.558" endtime="20220218 13:49:00.574"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${PAGE_HEADER}</arg>
+<arg>Home</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:49:00.574" level="INFO">Verifying element '//div[@data-test-id="header-background"]/div[2]/div/div/div/div[2]/a/div/div/span' contains exact text 'Home'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.574" endtime="20220218 13:49:00.590"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.558" endtime="20220218 13:49:00.590"/>
+</kw>
+<kw name="WHEN Click Account Option Button" library="Dashboard">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${ACCNT_OPTION_BTN}</arg>
+<doc>Clicks button identified by ``locator``.</doc>
+<msg timestamp="20220218 13:49:00.590" level="INFO">Clicking button '//div[@data-test-id="header-accounts-options-button"]/button'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.590" endtime="20220218 13:49:00.771"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.590" endtime="20220218 13:49:00.771"/>
+</kw>
+<kw name="THEN Verify Successful Logged in" library="ProfilePage">
+<arg>${ACCOUNT_NAME}</arg>
+<arg>${VALID_EMAIL}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${USER_DETAILS}</arg>
+<arg>${exp_name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220218 13:49:00.851" level="INFO">Element '//div[@id="HeaderAccountOptionsFlyout-item-0"]' contains text 'Shiela Ilao'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.787" endtime="20220218 13:49:00.851"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${USER_DETAILS}</arg>
+<arg>${exp_email}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220218 13:49:00.875" level="INFO">Element '//div[@id="HeaderAccountOptionsFlyout-item-0"]' contains text 'ilao.shiela@yahoo.com'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.851" endtime="20220218 13:49:00.883"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.779" endtime="20220218 13:49:00.883"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.558" endtime="20220218 13:49:00.883"/>
+</test>
+<test id="s1-s4-t2" name="Log out">
+<kw name="GIVEN Verify Account Options is displayed" library="ProfilePage">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:HeaderAccountOptionsFlyout</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220218 13:49:00.911" level="INFO">Element 'id:HeaderAccountOptionsFlyout' is displayed.</msg>
+<status status="PASS" starttime="20220218 13:49:00.883" endtime="20220218 13:49:00.911"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.883" endtime="20220218 13:49:00.911"/>
+</kw>
+<kw name="WHEN Click Logout Button" library="ProfilePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LOGOUT_BTN}</arg>
+<doc>Click element identified by ``locator``.</doc>
+<msg timestamp="20220218 13:49:00.911" level="INFO">Clicking element '//div[@data-test-id="header-menu-options-logout"]'.</msg>
+<status status="PASS" starttime="20220218 13:49:00.911" endtime="20220218 13:49:00.983"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220218 13:49:05.983" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220218 13:49:00.983" endtime="20220218 13:49:05.983"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.911" endtime="20220218 13:49:05.983"/>
+</kw>
+<kw name="THEN Verify Home Page Title" library="HomePage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Pinterest</arg>
+<doc>Waits until ``text`` appears on current page.</doc>
+<status status="PASS" starttime="20220218 13:49:05.983" endtime="20220218 13:49:06.023"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${TITLE_PAGE}</arg>
+<arg>Pinterest</arg>
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<msg timestamp="20220218 13:49:06.023" level="INFO">Verifying element '//div[@data-test-id="pinterest-logo"]/div/h1' contains exact text 'Pinterest'.</msg>
+<status status="PASS" starttime="20220218 13:49:06.023" endtime="20220218 13:49:06.063"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:05.983" endtime="20220218 13:49:06.063"/>
+</kw>
+<kw name="AND End Web Test" library="Common">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220218 13:49:06.071" endtime="20220218 13:49:08.421"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:06.071" endtime="20220218 13:49:08.421"/>
+</kw>
+<status status="PASS" starttime="20220218 13:49:00.883" endtime="20220218 13:49:08.421"/>
+</test>
+<status status="PASS" starttime="20220218 13:49:00.524" endtime="20220218 13:49:08.421"/>
+</suite>
+<status status="PASS" starttime="20220218 13:48:24.656" endtime="20220218 13:49:08.421"/>
+</suite>
+<statistics>
+<total>
+<stat pass="11" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="11" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="01 HomePage">Tests.01 HomePage</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s2" name="02 ForgotPassword">Tests.02 ForgotPassword</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s3" name="03 Login">Tests.03 Login</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s4" name="04 AccountDashboard">Tests.04 AccountDashboard</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
